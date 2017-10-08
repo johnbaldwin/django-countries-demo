@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="{% block html_language_code %}en{% endblock %}">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Demosite{% endblock %} </title>
+  </head>
+  <body id="{% block sectionid %}generic{% endblock %}" class="{% block body_class %}{% endblock %}">
+    {% block content %}{% endblock %}
+  </body>
+</html>
