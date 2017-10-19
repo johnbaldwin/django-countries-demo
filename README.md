@@ -1,12 +1,11 @@
-==============================
-Django Countries Demo project
-=============================
+
+# Django Countries Demo project
 
 A simple Django site to demonstrate the capabilities of Django Countries
 
 
-Overview
-========
+## Overview
+
 
 This is a demonstration site and app to show features of the Django Countries app:
 
