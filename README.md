@@ -11,3 +11,8 @@ This is a demonstration site and app to show features of the Django Countries ap
 
 * https://github.com/SmileyChris/django-countries
 
+
+## Fun TODOs
+
+* Import country info and continent data from here:
+ * https://github.com/annexare/Countries

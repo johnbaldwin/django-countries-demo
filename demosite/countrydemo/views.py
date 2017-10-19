@@ -17,7 +17,6 @@ from django.views.generic.edit import FormMixin
 from django_countries.widgets import CountrySelectWidget
 
 from .forms import (
-        #CountryInfoForm,
         UpdateCountryInfoForm,
         ChooseCountryForm,
     )
@@ -51,7 +50,7 @@ def wikipedia_pages(request):
 
 class CountryInfoListView(FormMixin, ListView):
     '''
-
+    Provide countries
     '''
 
     model = CountryInfo
@@ -64,13 +63,12 @@ class CountryInfoListView(FormMixin, ListView):
 
     def get_success_url(self):
         logger.info('CountryInfoListView.get_success_url called...')
-        
         return reverse('country-info-list-view')
 
     def post(self, request, *args, **kwargs):
-        print('CountryInfoListView.post called')
-        print('args={}'.format(args))
-        print('kwargs={}'.format(kwargs))
+        logger.info('CountryInfoListView.post called')
+        logger.info('args={}'.format(args))
+        logger.info('kwargs={}'.format(kwargs))
 
         country = request.POST.get('country')
         country_info = CountryInfo.objects.get(country=country)
@@ -84,18 +82,15 @@ class CountryInfoDetailView(DetailView):
     '''
 
     '''
+
     model = CountryInfo
     template_name = 'countrydemo/country_info_detail.html'
 
     def get_info_links(self):
-        cpl = CountryPageLink.objects.filter(country=self.object.country)
-        print('info_links={}'.format(cpl.count()))
-        return cpl
+        return CountryPageLink.objects.filter(country=self.object.country)
 
     def get_context_data(self, **kwargs):
-        print('CountryInfoDetailView.get_context_data called...')
         context = super(CountryInfoDetailView, self).get_context_data(**kwargs)
-        #context['form'] = CountryInfoForm(initial={'object': self.object})
         context['info_links'] = self.get_info_links()
         return context
 
@@ -104,6 +99,7 @@ class CountryInfoUpdateView(UpdateView):
     '''
 
     '''
+
     context_object_name = 'country_info'
     form_class = UpdateCountryInfoForm
     template_name = 'countrydemo/country_info_update_form.html'
