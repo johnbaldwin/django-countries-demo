@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block navigation %}
+{% include 'countrydemo/navigation.html' %}
+{% endblock %}
+{% block content %}
+<h1>Country Demo</h1>
+
+<ul>
+  <li>
+    <a href="{% url 'countrydemo:country-demo-about' %}">About this application</a>
+  </li>
+  <li>
+    <a href="{% url 'countrydemo:country-pages' %}">Wikipedia Country Pages</a>
+  </li>
+  <li>
+    <a href="{% url 'countrydemo:country-info-list-view' %}">CountryInfo List page</a>
+  </li>
+</ul>
+
+{% endblock %}

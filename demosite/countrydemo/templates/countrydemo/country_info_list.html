@@ -1,0 +1,29 @@
+
+{% load countries %}
+
+<h1>Country Info pages</h1>
+
+
+<div>
+{% get_country 'US' as this_country %}
+You are here: {{ this_country.name }}
+</div>
+
+{% include 'countrydemo/_country_select_form.html' %}
+
+<div>
+{% if show_country_list %}
+  {% if object_list %}
+    <ul>
+      {% for country_info in object_list %}
+        <li>{{ country_info.country.name }}</li>
+      {% endfor %}
+    </ul>
+
+  {% else %}
+    <p>No country info. Add some!</p>
+  {% endif %}
+{% endif %}
+</div>
+
+

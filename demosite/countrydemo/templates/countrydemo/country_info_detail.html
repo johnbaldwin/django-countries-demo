@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block navigation %}
+{% include 'countrydemo/navigation.html' %}
+{% endblock %}
+
+{% block content %}
+<div class='country-detail'>
+  <h1>Country Info Detail</h1>
+
+  <a href="{% url 'countrydemo:country-info-list-view' %}">CountryInfo List page</a>
+
+  <h2>Country: {{ object.country.name }}</h2>
+  <div class='notes'>
+    <h3>Notes:</h3>
+    {% if object.notes %}
+      <p>{{ object.notes|linebreaks }}</p>
+    {% else %}
+      <p class='no_notes_comment'>No notes</p>
+    {% endif %}
+    <div>
+      <a href='{% url 'countrydemo:country-info-update-view' object.id %}'>update</a>
+    </div>
+  </div>
+  <div>
+    {% if info_links %}
+      <h3>Information links</h3>
+      <ul>
+        {% for info_link in info_links %}
+          <li><a href="{{ info_link.url }}" target="_blank">{{ info_link.linkset.label }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div> no info links </div>
+    {% endif %}
+  </div>  
+</div>
+{% endblock %}

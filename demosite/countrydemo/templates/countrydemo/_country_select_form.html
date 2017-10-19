@@ -1,0 +1,6 @@
+<form action="{% url 'countrydemo:country-info-list-view' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <input type="submit" value="Send request">
+</form>
